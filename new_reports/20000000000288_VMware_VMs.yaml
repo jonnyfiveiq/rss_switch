@@ -1,0 +1,65 @@
+---
+- MiqReport:
+    title: VMware Virtual machines added
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: ManageIQ::Providers::InfraManager::Vm
+    cols:
+    - name
+    - description
+    - vendor_display
+    - location
+    - ems_created_on
+    include: {}
+    col_order:
+    - name
+    - description
+    - vendor_display
+    - location
+    - ems_created_on
+    headers:
+    - Name
+    - Description
+    - Vendor Display
+    - Location
+    - Created on Time
+    conditions: !ruby/object:MiqExpression
+      exp:
+        "=":
+          field: ManageIQ::Providers::InfraManager::Vm-vendor
+          value: vmware
+      context_type: 
+    order: Ascending
+    sortby:
+    - ems_created_on
+    - description
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 20000000000021
+    user_id: 20000000000002
+    menu_name: VMware VMs

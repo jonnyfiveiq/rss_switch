@@ -1,0 +1,67 @@
+---
+- MiqReport:
+    title: VMware Virtual machines that were powered on or off
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: EmsEvent
+    cols:
+    - vm_name
+    - event_type
+    include:
+      vm:
+        columns:
+        - description
+        - ems_created_on
+    col_order:
+    - vm_name
+    - vm.description
+    - vm.ems_created_on
+    - event_type
+    headers:
+    - VM Name
+    - VM and Instance Description
+    - VM and Instance Created on Time
+    - Event Type
+    conditions: !ruby/object:MiqExpression
+      exp:
+        or:
+        - "=":
+            field: EmsEvent-event_type
+            value: VmPoweredOnEvent
+        - "=":
+            field: EmsEvent-event_type
+            value: VmPoweredOffEvent
+      context_type: 
+    order: Descending
+    sortby:
+    - vm.ems_created_on
+    - vm.description
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 20000000000021
+    user_id: 20000000000002
+    menu_name: VM Power events

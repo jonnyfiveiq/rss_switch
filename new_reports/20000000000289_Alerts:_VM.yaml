@@ -1,0 +1,83 @@
+---
+- MiqReport:
+    title: VM Alert Events
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: EmsEvent
+    cols:
+    - vm_name
+    - event_type
+    - message
+    - created_on
+    - vm_location
+    - target_type
+    include:
+      vm:
+        columns:
+        - ems_created_on
+        - description
+    col_order:
+    - vm_name
+    - event_type
+    - vm.ems_created_on
+    - vm.description
+    - message
+    - created_on
+    - vm_location
+    - target_type
+    headers:
+    - VM Name
+    - Event Type
+    - VM and Instance Created on Time
+    - VM and Instance Description
+    - Message
+    - Date Created
+    - Vm Location
+    - Target Type
+    conditions: !ruby/object:MiqExpression
+      exp:
+        or:
+        - "=":
+            field: EmsEvent-event_type
+            value: VmPoweredOnEvent
+        - "=":
+            field: EmsEvent-event_type
+            value: VmPoweredOffEvent
+      context_type: 
+    order: Ascending
+    sortby:
+    - created_on
+    - vm.description
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 20000000000021
+    user_id: 20000000000002
+    menu_name: 'Alerts: VM'

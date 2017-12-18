@@ -1,0 +1,85 @@
+---
+- MiqReport:
+    title: Policy Events
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: EmsEvent
+    cols:
+    - vm_name
+    - vm_location
+    - event_type
+    - created_on
+    - timestamp
+    - message
+    include: {}
+    col_order:
+    - vm_name
+    - vm_location
+    - event_type
+    - created_on
+    - timestamp
+    - message
+    headers:
+    - VM Name
+    - Vm Location
+    - Event Type
+    - Date Created
+    - Activity Sample - Timestamp (Day/Time)
+    - Message
+    conditions: !ruby/object:MiqExpression
+      exp:
+        or:
+        - "=":
+            field: EmsEvent-event_type
+            value: vm_create
+        - "=":
+            field: EmsEvent-event_type
+            value: vm_clone
+        - "=":
+            field: EmsEvent-event_type
+            value: vm_clone_start
+        - "=":
+            field: EmsEvent-event_type
+            value: vm_template
+        - "=":
+            field: EmsEvent-event_type
+            value: vm_reconfigure
+        - "=":
+            field: EmsEvent-event_type
+            value: request_vm_destroy
+      context_type: 
+    order: Ascending
+    sortby:
+    - timestamp
+    - message
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 20000000000021
+    user_id: 20000000000002
+    menu_name: Policy Events

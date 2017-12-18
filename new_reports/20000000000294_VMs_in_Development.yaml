@@ -1,0 +1,77 @@
+---
+- MiqReport:
+    title: Virtual machines discovered in development
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Vm
+    cols:
+    - name
+    - vendor_display
+    - location
+    - ems_created_on
+    - description
+    include:
+      host:
+        columns:
+        - name
+      storage_systems:
+        columns:
+        - name
+    col_order:
+    - name
+    - vendor_display
+    - location
+    - host.name
+    - storage_systems.name
+    - ems_created_on
+    - description
+    headers:
+    - Name
+    - Vendor Display
+    - Location
+    - Host / Node Name
+    - Storage System Name
+    - Created on Time
+    - Description
+    conditions: !ruby/object:MiqExpression
+      exp:
+        CONTAINS:
+          tag: Vm.managed-environment
+          value: dev
+      context_type: 
+    order: Ascending
+    sortby:
+    - ems_created_on
+    - description
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 20000000000021
+    user_id: 20000000000002
+    menu_name: VMs in Development
